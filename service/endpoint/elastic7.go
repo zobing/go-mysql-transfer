@@ -56,8 +56,9 @@ func (s *Elastic7Endpoint) Connect() error {
 	var options []elastic.ClientOptionFunc
 	options = append(options, elastic.SetErrorLog(logagent.NewElsLoggerAgent()))
 	options = append(options, elastic.SetURL(s.hosts...))
+	options = append(options, elastic.SetSniff(false))
 	if global.Cfg().ElsUser != "" && global.Cfg().ElsPassword != "" {
-		options = append(options, elastic.SetBasicAuth(global.Cfg().ElsUser, global.Cfg().Password))
+		options = append(options, elastic.SetBasicAuth(global.Cfg().ElsUser, global.Cfg().ElsPassword))
 	}
 
 	client, err := elastic.NewClient(options...)
