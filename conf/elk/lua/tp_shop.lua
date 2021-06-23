@@ -9,6 +9,14 @@ local action = ops.rawAction()  --当前数据库事件,包括：insert、update
 -- 定义一个table,作为结果集
 local result = {}
 
+-- 拼接索引
+if row["shop_id"] ~= nil then
+    local id = string.format("shop_%d", row["shop_id"])
+else
+    local id = 'shop_0'
+end
+result["id"] = id
+
 -- 查询门店对应的商户信息, 数据库名必需
 local storeSql = string.format("SELECT * FROM wtshop.tp_store WHERE store_id = %d", row["store_id"])
 local storeInfo = db.selectOne(storeSql)
@@ -347,11 +355,11 @@ result["profit"] = 0
 -- 操作ES
 if action == "insert" then -- 新增事件
     -- 新增，参数1为index名称，string类型；参数2为要插入的数据主键；参数3为要插入的数据，tablele类型或者json字符串
-    ops.INSERT("jyjzzk_shop_product", shop_id, result)
+    ops.INSERT("jyjzzk_shop_product", id, result)
 elseif action == "delete" then -- 删除事件
     -- 删除，参数1为index名称，string类型；参数2为要插入的数据主键
-    ops.DELETE("jyjzzk_shop_product", shop_id)
+    ops.DELETE("jyjzzk_shop_product", id)
 else -- 修改事件
     -- 修改，参数1为index名称，string类型；参数2为要插入的数据主键；参数3为要插入的数据，tablele类型或者json字符串
-    ops.UPDATE("jyjzzk_shop_product", shop_id, result)
+    ops.UPDATE("jyjzzk_shop_product", id, result)
 end

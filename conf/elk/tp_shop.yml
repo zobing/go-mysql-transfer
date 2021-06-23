@@ -1,7 +1,7 @@
 # mysql配置
-addr: 127.0.0.1:3306
-user: #数据库访问用户名
-pass: #数据库访问密码
+addr: 127.0.0.1:3306 #数据库地址，需要调整
+user: #数据库访问用户名，需要调整
+pass: #数据库访问密码，需要调整
 charset : utf8
 slave_id: 5101 #slave ID
 flavor: mysql #mysql or mariadb,默认mysql
@@ -26,28 +26,32 @@ web_admin_port: 8061 #web监控端口,默认8060
 target: elasticsearch #支持redis、mongodb、elasticsearch、rocketmq、kafka、rabbitmq
 
 #elasticsearch连接配置
-es_addrs: http://es-cn-7pp289qbm000p7vum.elasticsearch.aliyuncs.com:9200 #连接地址，多个用逗号分隔
+es_addrs: http://es-cn-7pp289qbm000p7vum.elasticsearch.aliyuncs.com:9200 #连接地址，多个用逗号分隔，需要调整
 es_version: 7 #Elasticsearch版本，支持6和7、默认为7
-es_user: elastic #用户名
-es_password: Abc123456 #密码
+es_user: elastic #用户名，需要调整
+es_password: Abc123456 #密码，需要调整
 
 #规则配置
 rule:
   -
-    schema: esshop #数据库名称
+    schema: wtshop #数据库名称，需要调整
     table: tp_shop #表名称
     order_by_column: shop_id #排序字段，存量数据同步时不能为空
     date_formatter: yyyy-MM-dd #date类型格式化， 不填写默认yyyy-MM-dd
     datetime_formatter: yyyy-MM-dd HH:mm:ss #datetime、timestamp类型格式化，不填写默认yyyy-MM-dd HH:mm:ss
-    lua_file_path: conf/elk/lua/tp_shop.lua   #lua脚本文件
+    lua_file_path: ../../conf/elk/lua/tp_shop.lua   #lua脚本文件
 
     #elasticsearch相关
     es_index: jyjzzk_shop_product #Index名称,可以为空，默认使用表(Table)名称
-    #es_mappings: #索引映射，可以为空，为空时根据数据类型自行推导ES推导
+    es_mappings: #索引映射，可以为空，为空时根据数据类型自行推导ES推导
       -
-        column: st_store_id #数据库列名称
-        field: st_store_id #映射后的ES字段名称
-        type: long #ES字段类型
+        column: id #数据库列名称
+        field: id #映射后的ES字段名称
+        type: keyword #ES字段类型
+      -
+        column: st_store_id
+        field: st_store_id
+        type: long
       -
         column: store_name
         field: store_name
