@@ -1,0 +1,294 @@
+# mysql配置
+addr: 127.0.0.1:3306 #数据库地址，需要调整
+user: #数据库访问用户名，需要调整
+pass: #数据库访问密码，需要调整
+charset : utf8
+slave_id: 5103 #slave ID
+flavor: mysql #mysql or mariadb,默认mysql
+
+#系统相关配置
+data_dir: ../../store/tp_lian_product #应用产生的数据存放地址，包括日志、缓存数据等，默认当前运行目录下store文件夹，需要调整
+#logger:
+#  level: info #日志级别；支持：debug|info|warn|error，默认info
+
+#maxprocs: 50 #并发协（线）程数量，默认为: CPU核数*2；一般情况下不需要设置此项
+bulk_size: 1000 #每批处理数量，不写默认100，可以根据带宽、机器性能等调整;如果是全量数据初始化时redis建议设为1000，其他接收端酌情调大
+
+#prometheus相关配置
+#enable_exporter: true #是否启用prometheus exporter，默认false
+#exporter_addr: 9595 #prometheus exporter端口，默认9595
+
+#web admin相关配置
+#enable_web_admin: true #是否启用web admin，默认false
+#web_admin_port: 8061 #web监控端口,默认8060
+
+#目标类型
+target: elasticsearch #支持redis、mongodb、elasticsearch、rocketmq、kafka、rabbitmq
+
+#elasticsearch连接配置
+es_addrs: http://es-cn-7pp289qbm000p7vum.elasticsearch.aliyuncs.com:9200 #连接地址，多个用逗号分隔，需要调整
+es_version: 7 #Elasticsearch版本，支持6和7、默认为7
+es_user: elastic #用户名，需要调整
+es_password: Abc123456 #密码，需要调整
+
+#规则配置
+rule:
+  -
+    schema: wtshop #数据库名称，需要调整
+    table: tp_lian_product #表名称
+    order_by_column: id #排序字段，存量数据同步时不能为空
+    date_formatter: yyyy-MM-dd #date类型格式化， 不填写默认yyyy-MM-dd
+    datetime_formatter: yyyy-MM-dd HH:mm:ss #datetime、timestamp类型格式化，不填写默认yyyy-MM-dd HH:mm:ss
+    lua_file_path: ../../conf/elk/lua/tp_lian_product.lua   #lua脚本文件
+
+    #elasticsearch相关
+    es_index: jyjzzk_shop_product #Index名称,可以为空，默认使用表(Table)名称
+    es_mappings: #索引映射，可以为空，为空时根据数据类型自行推导ES推导
+      -
+        column: id #数据库列名称
+        field: id #映射后的ES字段名称
+        type: keyword #ES字段类型
+      -
+        column: st_store_id
+        field: st_store_id
+        type: long
+      -
+        column: st_store_name
+        field: st_store_name
+        type: text
+      -
+        column: st_bid
+        field: st_bid
+        type: long
+      -
+        column: st_sc_id
+        field: st_sc_id
+        type: long
+      -
+        column: st_store_state
+        field: st_store_state
+        type: byte
+      -
+        column: st_deleted
+        field: st_deleted
+        type: byte
+      -
+        column: st_is_show_wt
+        field: st_is_show_wt
+        type: byte
+      -
+        column: sh_shop_id
+        field: shop_id
+        type: long
+      -
+        column: sh_store_id
+        field: sh_store_id
+        type: long
+      -
+        column: sh_bid
+        field: sh_bid
+        type: long
+      -
+        column: sh_shop_name
+        field: sh_shop_name
+        type: text
+      -
+        column: sh_province_id
+        field: sh_province_id
+        type: long
+      -
+        column: sh_city_id
+        field: sh_city_id
+        type: long
+      -
+        column: sh_district_id
+        field: sh_district_id
+        type: long
+      -
+        column: sh_shop_address
+        field: sh_shop_address
+        type: text
+      -
+        column: sh_longitude
+        field: sh_longitude
+        type: double
+      -
+        column: sh_latitude
+        field: sh_latitude
+        type: double
+      -
+        column: sh_longitude_tencent
+        field: sh_longitude_tencent
+        type: double
+      -
+        column: sh_latitude_tencent
+        field: sh_latitude_tencent
+        type: double
+      -
+        column: sh_shop_status
+        field: sh_shop_status
+        type: byte
+      -
+        column: sh_deleted
+        field: sh_deleted
+        type: byte
+      -
+        column: sh_shop_intro
+        field: sh_shop_intro
+        type: text
+      -
+        column: sh_shop_logo
+        field: sh_shop_logo
+        type: keyword
+      -
+        column: sh_average_consumption
+        field: sh_average_consumption
+        type: float
+      -
+        column: sh_preferential_description
+        field: sh_preferential_description
+        type: text
+      -
+        column: sh_popularity_bonus
+        field: sh_popularity_bonus
+        type: short
+      -
+        column: sh_sales_volume
+        field: sh_sales_volume
+        type: short
+      -
+        column: sh_recommend_sort
+        field: sh_recommend_sort
+        type: integer
+      -
+        column: sh_is_recommend
+        field: sh_is_recommend
+        type: byte
+      -
+        column: sh_virtual_share_times
+        field: sh_virtual_share_times
+        type: integer
+      -
+        column: coordinate
+        field: coordinate
+        type: geo_point
+      -
+        column: source_type
+        field: source_type
+        type: keyword
+      -
+        column: source
+        field: source
+        type: keyword
+      -
+        column: lp_id
+        field: lp_id
+        type: long
+      -
+        column: lp_lian_id
+        field: lp_lian_id
+        type: long
+      -
+        column: lp_location_id
+        field: lp_location_id
+        type: long
+      -
+        column: lp_only_name
+        field: lp_only_name
+        type: text
+      -
+        column: lp_title
+        field: lp_title
+        type: text
+      -
+        column: lp_product_title
+        field: lp_product_title
+        type: text
+      -
+        column: lp_share_text
+        field: lp_share_text
+        type: text
+      -
+        column: lp_face_img
+        field: lp_face_img
+        type: keyword
+      -
+        column: lp_address
+        field: lp_address
+        type: text
+      -
+        column: lp_tel
+        field: lp_tel
+        type: keyword
+      -
+        column: lp_end_time
+        field: lp_end_time
+        type: long
+      -
+        column: lp_begin_time
+        field: lp_begin_time
+        type: long
+      -
+        column: lp_valid_end_date
+        field: lp_valid_end_date
+        type: long
+      -
+        column: lp_valid_begin_date
+        field: lp_valid_begin_date
+        type: long
+      -
+        column: lp_channel_stock
+        field: lp_channel_stock
+        type: short
+      -
+        column: lp_channel_sale_amount
+        field: lp_channel_sale_amount
+        type: short
+      -
+        column: lp_category_path
+        field: lp_category_path
+        type: text
+      -
+        column: lp_product_category_id
+        field: lp_product_category_id
+        type: long
+      -
+        column: lp_status
+        field: lp_status
+        type: byte
+      -
+        column: lp_city_code
+        field: lp_city_code
+        type: keyword
+      -
+        column: lp_is_show
+        field: lp_is_show
+        type: byte
+      -
+        column: lp_type
+        field: lp_type
+        type: byte
+      -
+        column: lp_booking_show_address
+        field: lp_booking_show_address
+        type: byte
+      -
+        column: lp_booking_type
+        field: lp_booking_type
+        type: byte
+      -
+        column: lp_sale_price
+        field: lp_sale_price
+        type: integer
+      -
+        column: lp_channel_price
+        field: lp_channel_price
+        type: integer
+      -
+        column: lp_origin_price
+        field: lp_origin_price
+        type: integer
+      -
+        column: lp_profit
+        field: lp_profit
+        type: integer
