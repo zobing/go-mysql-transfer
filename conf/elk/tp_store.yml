@@ -3,7 +3,7 @@ addr: 127.0.0.1:3306 #数据库地址，需要调整
 user: #数据库访问用户名，需要调整
 pass: #数据库访问密码，需要调整
 charset : utf8
-slave_id: 5101 #slave ID
+slave_id: 5102 #slave ID
 flavor: mysql #mysql or mariadb,默认mysql
 
 #系统相关配置
