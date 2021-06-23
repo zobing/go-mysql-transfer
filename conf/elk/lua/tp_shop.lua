@@ -19,7 +19,7 @@ end
 result["id"] = id
 
 -- 查询门店对应的商户信息, 数据库名必需
-local storeSql = string.format("SELECT * FROM wtshop.tp_store WHERE store_id = %d", row["store_id"])
+local storeSql = string.format("SELECT * FROM esshop.tp_store WHERE store_id = %d", row["store_id"])
 local storeInfo = db.selectOne(storeSql)
 if next(storeInfo) ~= nil then
     -- 店铺索引id

@@ -34,7 +34,7 @@ es_password: Abc123456 #密码，需要调整
 #规则配置
 rule:
   -
-    schema: wtshop #数据库名称，需要调整
+    schema: esshop #数据库名称，需要调整
     table: tp_shop #表名称
     order_by_column: shop_id #排序字段，存量数据同步时不能为空
     date_formatter: yyyy-MM-dd #date类型格式化， 不填写默认yyyy-MM-dd

@@ -13,7 +13,7 @@ local result = {}
 local id
 
 -- 查询商户下所有门店信息, 数据库名必需
-local shopSql = string.format("SELECT * FROM wtshop.tp_shop WHERE store_id = %d", row["store_id"])
+local shopSql = string.format("SELECT * FROM esshop.tp_shop WHERE store_id = %d", row["store_id"])
 local shopList = db.select(shopSql)
 
 -- 店铺名称：store_name
