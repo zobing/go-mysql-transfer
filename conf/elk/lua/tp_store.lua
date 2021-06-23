@@ -16,6 +16,41 @@ local id
 local shopSql = string.format("SELECT * FROM wtshop.tp_shop WHERE store_id = %d", row["store_id"])
 local shopList = db.select(shopSql)
 
+-- 店铺名称：store_name
+if row["store_name"] ~= nil then
+    result["st_store_name"] = row["store_name"]
+else
+    result["st_store_name"] = ""
+end
+
+-- 店铺分类id：sc_id
+if row["sc_id"] ~= nil then
+    result["st_sc_id"] = row["sc_id"]
+else
+    result["st_sc_id"] = 0
+end
+
+-- 店铺状态，0关闭，1开启，2审核中：store_state
+if row["store_state"] ~= nil then
+    result["st_store_state"] = row["store_state"]
+else
+    result["st_store_state"] = 2
+end
+
+-- 未删除0，已删除1：deleted
+if row["deleted"] ~= nil then
+    result["st_deleted"] = row["deleted"]
+else
+    result["st_deleted"] = 0
+end
+
+-- 是否整合至外拓商圈：0否；1是，is_show_wt
+if row["is_show_wt"] ~= nil then
+    result["st_is_show_wt"] = row["is_show_wt"]
+else
+    result["st_is_show_wt"] = 0
+end
+
 for i, shopInfo in ipairs(shopList) do
     if next(shopInfo) ~= nil then
         -- 索引
@@ -23,41 +58,6 @@ for i, shopInfo in ipairs(shopList) do
             id = string.format("shop_%d", shopInfo["shop_id"])
         else
             id = 'shop_0'
-        end
-
-        -- 店铺名称：store_name
-        if row["store_name"] ~= nil then
-            result["st_store_name"] = row["store_name"]
-        else
-            result["st_store_name"] = ""
-        end
-
-        -- 店铺分类id：sc_id
-        if row["sc_id"] ~= nil then
-            result["st_sc_id"] = row["sc_id"]
-        else
-            result["st_sc_id"] = 0
-        end
-
-        -- 店铺状态，0关闭，1开启，2审核中：store_state
-        if row["store_state"] ~= nil then
-            result["st_store_state"] = row["store_state"]
-        else
-            result["st_store_state"] = 2
-        end
-
-        -- 未删除0，已删除1：deleted
-        if row["deleted"] ~= nil then
-            result["st_deleted"] = row["deleted"]
-        else
-            result["st_deleted"] = 0
-        end
-
-        -- 是否整合至外拓商圈：0否；1是，is_show_wt
-        if row["is_show_wt"] ~= nil then
-            result["st_is_show_wt"] = row["is_show_wt"]
-        else
-            result["st_is_show_wt"] = 0
         end
 
         -- 操作ES
