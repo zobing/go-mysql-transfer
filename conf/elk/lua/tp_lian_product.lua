@@ -226,7 +226,7 @@ else
 end
 
 -- 坐标
-if (row["longitude"] ~= nil) and (row["latitude"] ~= nil) then
+if (row["longitude"] ~= nil) and (row["latitude"] ~= nil) and (row["longitude"] ~= "") and (row["latitude"] ~= "") then
     local lng = tonumber(row["longitude"])
     local lat = tonumber(row["latitude"])
     if (lng >= -180) and (lng <= 180) and (lat >= -90) and (lat <= 90) then
