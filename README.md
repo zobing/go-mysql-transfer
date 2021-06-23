@@ -202,3 +202,25 @@ server_id=1 # 配置 MySQL replaction 需要定义，不要和 go-mysql-transfer
 
 **v1.0.4 release**
 * 修复了 -position 命令，binlog 名称验证问题
+
+# Zobeen二次开发说明
+
+### 编译安装
+git clone https://github.com/zobing/go-mysql-transfer.git
+
+# export GO111MODULE=on
+
+解决go包管理代理网址无法访问：proxy.golang.org
+```
+go env -w GOPROXY=https://goproxy.cn
+```
+
+编译
+```
+go build -v
+```
+
+移动 go-mysql-transfer 到bin目录
+```
+mv go-mysql-transfer ./bin
+```
