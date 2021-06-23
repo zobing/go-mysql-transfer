@@ -143,11 +143,11 @@ rule:
       -
         column: sh_popularity_bonus
         field: sh_popularity_bonus
-        type: short
+        type: long
       -
         column: sh_sales_volume
         field: sh_sales_volume
-        type: short
+        type: long
       -
         column: sh_recommend_sort
         field: sh_recommend_sort
@@ -231,11 +231,11 @@ rule:
       -
         column: lp_channel_stock
         field: lp_channel_stock
-        type: short
+        type: long
       -
         column: lp_channel_sale_amount
         field: lp_channel_sale_amount
-        type: short
+        type: long
       -
         column: lp_category_path
         field: lp_category_path
