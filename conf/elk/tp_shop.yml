@@ -53,120 +53,120 @@ rule:
         field: st_store_id
         type: long
       -
-        column: store_name
-        field: store_name
+        column: st_store_name
+        field: st_store_name
         type: text
       -
         column: st_bid
         field: st_bid
         type: long
       -
-        column: sc_id
-        field: sc_id
+        column: st_sc_id
+        field: st_sc_id
         type: long
       -
-        column: store_state
-        field: store_state
+        column: st_store_state
+        field: st_store_state
         type: byte
       -
         column: st_deleted
         field: st_deleted
         type: byte
       -
-        column: is_show_wt
-        field: is_show_wt
+        column: st_is_show_wt
+        field: st_is_show_wt
         type: byte
       -
-        column: shop_id
+        column: sh_shop_id
         field: shop_id
         type: long
       -
-        column: store_id
-        field: store_id
+        column: sh_store_id
+        field: sh_store_id
         type: long
       -
         column: sh_bid
         field: sh_bid
         type: long
       -
-        column: shop_name
-        field: shop_name
+        column: sh_shop_name
+        field: sh_shop_name
         type: text
       -
-        column: province_id
-        field: province_id
+        column: sh_province_id
+        field: sh_province_id
         type: long
       -
-        column: city_id
-        field: city_id
+        column: sh_city_id
+        field: sh_city_id
         type: long
       -
-        column: district_id
-        field: district_id
+        column: sh_district_id
+        field: sh_district_id
         type: long
       -
-        column: shop_address
-        field: shop_address
+        column: sh_shop_address
+        field: sh_shop_address
         type: text
       -
-        column: longitude
-        field: longitude
+        column: sh_longitude
+        field: sh_longitude
         type: double
       -
-        column: latitude
-        field: latitude
+        column: sh_latitude
+        field: sh_latitude
         type: double
       -
-        column: longitude_tencent
-        field: longitude_tencent
+        column: sh_longitude_tencent
+        field: sh_longitude_tencent
         type: double
       -
-        column: latitude_tencent
-        field: latitude_tencent
+        column: sh_latitude_tencent
+        field: sh_latitude_tencent
         type: double
       -
-        column: shop_status
-        field: shop_status
+        column: sh_shop_status
+        field: sh_shop_status
         type: byte
       -
-        column: deleted
-        field: deleted
+        column: sh_deleted
+        field: sh_deleted
         type: byte
       -
-        column: shop_intro
-        field: shop_intro
+        column: sh_shop_intro
+        field: sh_shop_intro
         type: text
       -
-        column: shop_logo
-        field: shop_logo
+        column: sh_shop_logo
+        field: sh_shop_logo
         type: keyword
       -
-        column: average_consumption
-        field: average_consumption
+        column: sh_average_consumption
+        field: sh_average_consumption
         type: float
       -
-        column: preferential_description
-        field: preferential_description
+        column: sh_preferential_description
+        field: sh_preferential_description
         type: text
       -
-        column: popularity_bonus
-        field: popularity_bonus
+        column: sh_popularity_bonus
+        field: sh_popularity_bonus
         type: short
       -
-        column: sales_volume
-        field: sales_volume
+        column: sh_sales_volume
+        field: sh_sales_volume
         type: short
       -
-        column: recommend_sort
-        field: recommend_sort
+        column: sh_recommend_sort
+        field: sh_recommend_sort
         type: integer
       -
-        column: is_recommend
-        field: is_recommend
+        column: sh_is_recommend
+        field: sh_is_recommend
         type: byte
       -
-        column: virtual_share_times
-        field: virtual_share_times
+        column: sh_virtual_share_times
+        field: sh_virtual_share_times
         type: integer
       -
         column: coordinate
@@ -181,114 +181,114 @@ rule:
         field: source
         type: keyword
       -
-        column: lian_product_id
-        field: lian_product_id
+        column: lp_id
+        field: lp_id
         type: long
       -
-        column: lian_id
-        field: lian_id
+        column: lp_lian_id
+        field: lp_lian_id
         type: long
       -
-        column: location_id
-        field: location_id
+        column: lp_location_id
+        field: lp_location_id
         type: long
       -
-        column: only_name
-        field: only_name
+        column: lp_only_name
+        field: lp_only_name
         type: text
       -
-        column: title
-        field: title
+        column: lp_title
+        field: lp_title
         type: text
       -
-        column: product_title
-        field: product_title
+        column: lp_product_title
+        field: lp_product_title
         type: text
       -
-        column: share_text
-        field: share_text
+        column: lp_share_text
+        field: lp_share_text
         type: text
       -
-        column: face_img
-        field: face_img
+        column: lp_face_img
+        field: lp_face_img
         type: keyword
       -
-        column: address
-        field: address
+        column: lp_address
+        field: lp_address
         type: text
       -
-        column: tel
-        field: tel
+        column: lp_tel
+        field: lp_tel
         type: keyword
       -
-        column: end_time
-        field: end_time
+        column: lp_end_time
+        field: lp_end_time
         type: long
       -
-        column: begin_time
-        field: begin_time
+        column: lp_begin_time
+        field: lp_begin_time
         type: long
       -
-        column: valid_end_date
-        field: valid_end_date
+        column: lp_valid_end_date
+        field: lp_valid_end_date
         type: long
       -
-        column: valid_begin_date
-        field: valid_begin_date
+        column: lp_valid_begin_date
+        field: lp_valid_begin_date
         type: long
       -
-        column: channel_stock
-        field: channel_stock
+        column: lp_channel_stock
+        field: lp_channel_stock
         type: short
       -
-        column: channel_sale_amount
-        field: channel_sale_amount
+        column: lp_channel_sale_amount
+        field: lp_channel_sale_amount
         type: short
       -
-        column: category_path
-        field: category_path
+        column: lp_category_path
+        field: lp_category_path
         type: text
       -
-        column: product_category_id
-        field: product_category_id
+        column: lp_product_category_id
+        field: lp_product_category_id
         type: long
       -
-        column: status
-        field: status
+        column: lp_status
+        field: lp_status
         type: byte
       -
-        column: city_code
-        field: city_code
+        column: lp_city_code
+        field: lp_city_code
         type: keyword
       -
-        column: is_show
-        field: is_show
+        column: lp_is_show
+        field: lp_is_show
         type: byte
       -
-        column: type
-        field: type
+        column: lp_type
+        field: lp_type
         type: byte
       -
-        column: booking_show_address
-        field: booking_show_address
+        column: lp_booking_show_address
+        field: lp_booking_show_address
         type: byte
       -
-        column: booking_type
-        field: booking_type
+        column: lp_booking_type
+        field: lp_booking_type
         type: byte
       -
-        column: sale_price
-        field: sale_price
+        column: lp_sale_price
+        field: lp_sale_price
         type: integer
       -
-        column: channel_price
-        field: channel_price
+        column: lp_channel_price
+        field: lp_channel_price
         type: integer
       -
-        column: origin_price
-        field: origin_price
+        column: lp_origin_price
+        field: lp_origin_price
         type: integer
       -
-        column: profit
-        field: profit
+        column: lp_profit
+        field: lp_profit
         type: integer
