@@ -284,3 +284,7 @@ rule:
         column: lp_profit
         field: lp_profit
         type: integer
+      -
+        column: city_code
+        field: city_code
+        type: keyword

@@ -80,6 +80,15 @@ else
     result["st_is_show_wt"] = 0
 end
 
+-- 查询门店所在城市编码信息, 数据库名必需
+local regionSql = string.format("SELECT * FROM esshop.tp_region WHERE id = %d", row["city_id"])
+local regionInfo = db.selectOne(regionSql)
+if next(regionInfo) ~= nil then
+    result["city_code"] = regionInfo['code']
+else
+    result["city_code"] = ""
+end
+
 --[[ 门店信息 开始 --]]
 -- 门店索引id：shop_id
 if row["shop_id"] ~= nil then

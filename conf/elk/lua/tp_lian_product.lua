@@ -162,8 +162,10 @@ end
 -- 城市编码：city_code
 if row["city_code"] ~= nil then
     result["lp_city_code"] = row["city_code"]
+    result["city_code"] = row["city_code"]
 else
     result["lp_city_code"] = ""
+    result["city_code"] = ""
 end
 
 -- 当前站点是否可见：is_show
