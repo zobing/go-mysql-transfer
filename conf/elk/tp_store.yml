@@ -7,20 +7,12 @@ slave_id: 5101 #slave ID
 flavor: mysql #mysql or mariadb,默认mysql
 
 #系统相关配置
-data_dir: ../../store/tp_shop #应用产生的数据存放地址，包括日志、缓存数据等，默认当前运行目录下store文件夹，需要调整
+data_dir: ../../store/tp_store #应用产生的数据存放地址，包括日志、缓存数据等，默认当前运行目录下store文件夹，需要调整
 #logger:
 #  level: info #日志级别；支持：debug|info|warn|error，默认info
 
 #maxprocs: 50 #并发协（线）程数量，默认为: CPU核数*2；一般情况下不需要设置此项
 bulk_size: 1000 #每批处理数量，不写默认100，可以根据带宽、机器性能等调整;如果是全量数据初始化时redis建议设为1000，其他接收端酌情调大
-
-#prometheus相关配置
-#enable_exporter: true #是否启用prometheus exporter，默认false
-#exporter_addr: 9595 #prometheus exporter端口，默认9595
-
-#web admin相关配置
-#enable_web_admin: true #是否启用web admin，默认false
-#web_admin_port: 8061 #web监控端口,默认8060
 
 #目标类型
 target: elasticsearch #支持redis、mongodb、elasticsearch、rocketmq、kafka、rabbitmq
@@ -35,11 +27,11 @@ es_password: Abc123456 #密码，需要调整
 rule:
   -
     schema: wtshop #数据库名称，需要调整
-    table: tp_shop #表名称
-    order_by_column: shop_id #排序字段，存量数据同步时不能为空
+    table: tp_store #表名称
+    order_by_column: store_id #排序字段，存量数据同步时不能为空
     date_formatter: yyyy-MM-dd #date类型格式化， 不填写默认yyyy-MM-dd
     datetime_formatter: yyyy-MM-dd HH:mm:ss #datetime、timestamp类型格式化，不填写默认yyyy-MM-dd HH:mm:ss
-    lua_file_path: ../../conf/elk/lua/tp_shop.lua   #lua脚本文件
+    lua_file_path: ../../conf/elk/lua/tp_store.lua   #lua脚本文件
 
     #elasticsearch相关
     es_index: jyjzzk_shop_product #Index名称,可以为空，默认使用表(Table)名称

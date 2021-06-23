@@ -268,6 +268,7 @@ result["source_type"] = "shop"
 result["source"] = "binlog"
 
 --[[ 联联商品信息 开始 --]]
+--[[
 -- 联联产品索引ID：id
 result["lp_id"] = 0
 
@@ -355,6 +356,7 @@ result["lp_origin_price"] = 0
 
 -- 利润
 result["lp_profit"] = 0
+--]]
 --[[ 联联商品信息 结束 --]]
 
 -- 操作ES
