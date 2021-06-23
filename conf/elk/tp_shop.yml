@@ -7,7 +7,7 @@ slave_id: 5101 #slave ID
 flavor: mysql #mysql or mariadb,默认mysql
 
 #系统相关配置
-#data_dir: /www/wwwroot/elk/transfer #应用产生的数据存放地址，包括日志、缓存数据等，默认当前运行目录下store文件夹
+data_dir: ../../store #应用产生的数据存放地址，包括日志、缓存数据等，默认当前运行目录下store文件夹，需要调整
 #logger:
 #  level: info #日志级别；支持：debug|info|warn|error，默认info
 
@@ -19,8 +19,8 @@ bulk_size: 1000 #每批处理数量，不写默认100，可以根据带宽、机
 #exporter_addr: 9595 #prometheus exporter端口，默认9595
 
 #web admin相关配置
-enable_web_admin: true #是否启用web admin，默认false
-web_admin_port: 8061 #web监控端口,默认8060
+#enable_web_admin: true #是否启用web admin，默认false
+#web_admin_port: 8061 #web监控端口,默认8060
 
 #目标类型
 target: elasticsearch #支持redis、mongodb、elasticsearch、rocketmq、kafka、rabbitmq

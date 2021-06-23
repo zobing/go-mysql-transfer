@@ -251,7 +251,7 @@ end
 
 -- 坐标
 if (row["longitude_tencent"] ~= nil) and (row["latitude_tencent"] ~= nil) then
-    if (row["longitude_tencent"] >= -180) and (row["longitude_tencent"] <= 180) and (row["latitude_tencent"] >= -90) and (row["latitude_tencent"] <= -90) then
+    if (row["longitude_tencent"] >= -180) and (row["longitude_tencent"] <= 180) and (row["latitude_tencent"] >= -90) and (row["latitude_tencent"] <= 90) then
         result["coordinate"] = {row["longitude_tencent"], row["latitude_tencent"]}
     else
         result["coordinate"] = {0, 0}
