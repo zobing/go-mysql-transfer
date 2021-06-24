@@ -258,6 +258,13 @@ else
     result["sh_virtual_share_times"] = 0
 end
 
+-- 支付结算中心门店ID：pay_sid
+if row["pay_sid"] ~= nil then
+    result["sh_pay_sid"] = row["pay_sid"]
+else
+    result["sh_pay_sid"] = 0
+end
+
 -- 坐标
 if (row["longitude_tencent"] ~= nil) and (row["latitude_tencent"] ~= nil) then
     if (row["longitude_tencent"] >= -180) and (row["longitude_tencent"] <= 180) and (row["latitude_tencent"] >= -90) and (row["latitude_tencent"] <= 90) then

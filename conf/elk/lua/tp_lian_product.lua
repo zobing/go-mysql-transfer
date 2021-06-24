@@ -227,6 +227,13 @@ else
     result["lp_profit"] = 0
 end
 
+-- 是否可以销售
+if result["lp_profit"] - result["lp_min_profit"] > 0 then
+    result['lp_can_sale'] = 1
+else
+    result['lp_can_sale'] = 0
+end
+
 -- 坐标
 if (row["longitude"] ~= nil) and (row["latitude"] ~= nil) and (row["longitude"] ~= "") and (row["latitude"] ~= "") then
     local lng = tonumber(row["longitude"])

@@ -161,6 +161,10 @@ rule:
         field: sh_virtual_share_times
         type: integer
       -
+        column: sh_pay_sid
+        field: sh_pay_sid
+        type: integer
+      -
         column: coordinate
         field: coordinate
         type: geo_point
@@ -284,6 +288,10 @@ rule:
         column: lp_profit
         field: lp_profit
         type: integer
+      -
+        column: lp_can_sale
+        field: lp_can_sale
+        type: byte
       -
         column: city_code
         field: city_code
