@@ -313,6 +313,8 @@ result["lp_can_sale"] = 1
 
 -- 渠道库存是否满足单次购买数量
 result["lp_is_meet_with_single_min"] = 1
+
+result['lp_lian_id'] = string.format("shop_%d", row["shop_id"])
 --[[ 联联商品信息 结束 --]]
 
 -- 操作ES

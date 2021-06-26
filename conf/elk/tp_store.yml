@@ -183,7 +183,7 @@ rule:
       -
         column: lp_lian_id
         field: lp_lian_id
-        type: long
+        type: keyword
       -
         column: lp_location_id
         field: lp_location_id
