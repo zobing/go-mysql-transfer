@@ -78,7 +78,7 @@ rule:
         type: byte
       -
         column: sh_shop_id
-        field: shop_id
+        field: sh_shop_id
         type: long
       -
         column: sh_store_id
@@ -300,6 +300,14 @@ rule:
         column: lp_can_sale
         field: lp_can_sale
         type: byte
+      -
+        column: lp_is_meet_with_single_min
+        field: lp_is_meet_with_single_min
+        type: byte
+      -
+        column: sh_heats
+        field: sh_heats
+        type: long
       -
         column: city_code
         field: city_code

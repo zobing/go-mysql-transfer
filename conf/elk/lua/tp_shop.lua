@@ -265,6 +265,9 @@ else
     result["sh_pay_sid"] = 0
 end
 
+-- 热度：heats
+result["sh_heats"] = row["sales_volume"] * 3 + row["scan"] + row["popularity_bonus"]
+
 -- 坐标
 if (row["longitude_tencent"] ~= nil) and (row["latitude_tencent"] ~= nil) then
     if (row["longitude_tencent"] >= -180) and (row["longitude_tencent"] <= 180) and (row["latitude_tencent"] >= -90) and (row["latitude_tencent"] <= 90) then
@@ -284,70 +287,6 @@ result["source_type"] = "shop"
 result["source"] = "binlog"
 
 --[[ 联联商品信息 开始 --]]
---[[
--- 联联产品索引ID：id
-result["lp_id"] = 0
-
--- 联联产品ID：lian_id
-result["lp_lian_id"] = 0
-
--- 联联站点ID | tp_lian_location.lian_id：location_id
-result["lp_location_id"] = 0
-
--- 产品名称：only_name
-result["lp_only_name"] = ""
-
--- 产品标题：title
-result["lp_title"] = ""
-
--- 产品标题（展示前端）：product_title
-result["lp_product_title"] = ""
-
--- 产品简称(分享文字介绍)：share_text
-result["lp_share_text"] = ""
-
--- 封面图片：face_img
-result["lp_face_img"] = ""
-
--- 商家地址：address
-result["lp_address"] = ""
-
--- 商家电话：tel
-result["lp_tel"] = ""
-
--- 抢购结束时间：end_time
-result["lp_end_time"] = 0
-
--- 抢购开始时间：begin_time
-result["lp_begin_time"] = 0
-
--- 有效结束时间：valid_end_date
-result["lp_valid_end_date"] = 0
-
--- 有效开始时间：valid_begin_date
-result["valid_begin_date"] = 0
-
--- 渠道库存：channel_stock
-result["lp_channel_stock"] = 0
-
--- 渠道销量：channel_sale_amount
-result["lp_channel_sale_amount"] = 0
-
--- 渠道销量：channel_sale_amount
-result["lp_channel_sale_amount"] = 0
-
--- 产品分类全路径,使用’-\r\n’分隔子级与父级,父级在前：category_path
-result["lp_category_path"] = ""
-
--- 产品分类 id：product_category_id
-result["lp_product_category_id"] = 0
-
--- 外拓状态：0下架；1上架 id：status
-result["lp_status"] = 0
-
--- 城市编码：city_code
-result["lp_city_code"] = ""
-
 -- 当前站点是否可见：is_show
 result["lp_is_show"] = 0
 
@@ -357,22 +296,23 @@ result["lp_type"] = -1
 -- 是否需要填写配送地址：booking_show_address
 result["lp_booking_show_address"] = 0
 
--- 预约方式 0-无需预约 1-网址预约 2-电话预约：booking_type
-result["lp_booking_type"] = 0
+-- 渠道库存：channel_stock
+result["lp_channel_stock"] = 100000
 
--- （最低套餐售价的套餐）售价（分）：sale_price
-result["lp_sale_price"] = 0
-result["lp_min_profit"] = 0
+-- 有效开始时间：valid_begin_date
+result["lp_valid_begin_date"] = 0
 
--- （最低套餐售价的套餐）结算价（分）：channel_price
-result["lp_channel_price"] = 0
+-- 有效结束时间：valid_end_date
+result["lp_valid_end_date"] = 4102416000000
 
--- （最低套餐售价的套餐）原价（分）：origin_price
-result["lp_origin_price"] = 0
+-- 外拓状态：0下架；1上架 id：status
+result["lp_status"] = 1
 
--- 利润
-result["lp_profit"] = 0
---]]
+-- 外拓利润利大于3%可售
+result["lp_can_sale"] = 1
+
+-- 渠道库存是否满足单次购买数量
+result["lp_is_meet_with_single_min"] = 1
 --[[ 联联商品信息 结束 --]]
 
 -- 操作ES

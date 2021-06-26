@@ -228,10 +228,17 @@ else
 end
 
 -- 是否可以销售
-if result["lp_profit"] - result["lp_min_profit"] > 0 then
+if result["lp_profit"] > result["lp_min_profit"] then
     result['lp_can_sale'] = 1
 else
     result['lp_can_sale'] = 0
+end
+
+-- 渠道库存是否满足单次购买数量
+if result["channel_stock"] >= result["single_min"] then
+    result['lp_is_meet_with_single_min'] = 1
+else
+    result['lp_is_meet_with_single_min'] = 0
 end
 
 -- 坐标
@@ -253,6 +260,23 @@ result["source_type"] = "lian_product"
 
 -- 数据来源
 result["source"] = "binlog"
+
+--[[ 门店信息 开始 --]]
+-- 门店删除状态
+result["sh_deleted"] = 0
+
+-- 门店开启状态
+result["sh_shop_status"] = 1
+
+-- 是否整合到外拓商圈
+result["st_is_show_wt"] = 1
+
+-- 商户开启状态
+result["st_store_state"] = 1
+
+-- 商户删除状态
+result["st_deleted"] = 0
+--[[ 门店信息 结束 --]]
 
 -- 操作ES
 if action == "insert" then -- 新增事件
