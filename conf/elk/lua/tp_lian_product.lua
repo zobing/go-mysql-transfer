@@ -235,7 +235,7 @@ else
 end
 
 -- 渠道库存是否满足单次购买数量
-if result["channel_stock"] >= result["single_min"] then
+if row["channel_stock"] >= row["single_min"] then
     result['lp_is_meet_with_single_min'] = 1
 else
     result['lp_is_meet_with_single_min'] = 0

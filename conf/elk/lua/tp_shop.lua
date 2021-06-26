@@ -288,10 +288,10 @@ result["source"] = "binlog"
 
 --[[ 联联商品信息 开始 --]]
 -- 当前站点是否可见：is_show
-result["lp_is_show"] = 0
+result["lp_is_show"] = 1
 
 -- 套餐状态 0-下架 1-上架 2-售罄：type
-result["lp_type"] = -1
+result["lp_type"] = 1
 
 -- 是否需要填写配送地址：booking_show_address
 result["lp_booking_show_address"] = 0
