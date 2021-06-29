@@ -34,7 +34,7 @@ rule:
     lua_file_path: ../../conf/elk/lua/tp_lian_product_shop.lua   #lua脚本文件
 
     #elasticsearch相关
-    es_index: jyjzzk_shop_product #Index名称,可以为空，默认使用表(Table)名称
+    es_index: jyjzzk_lian_product_shop #Index名称,可以为空，默认使用表(Table)名称
     es_mappings: #索引映射，可以为空，为空时根据数据类型自行推导ES推导
       -
         column: lian_id #数据库列名称
