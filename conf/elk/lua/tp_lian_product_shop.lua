@@ -56,6 +56,19 @@ else
     result["longitude"] = 0
 end
 
+-- 坐标
+if (row["longitude"] ~= nil) and (row["latitude"] ~= nil) and (row["longitude"] ~= "") and (row["latitude"] ~= "") then
+    local lng = tonumber(row["longitude"])
+    local lat = tonumber(row["latitude"])
+    if (lng >= -180) and (lng <= 180) and (lat >= -90) and (lat <= 90) then
+        result["coordinate"] = {lng, lat}
+    else
+        result["coordinate"] = {0, 0}
+    end
+else
+    result["coordinate"] = {0, 0}
+end
+
 local currentTime = os.date("%Y-%m-%d %H:%M:%S")
 
 -- 操作ES
@@ -63,12 +76,12 @@ if action == "insert" then -- 新增事件
     -- 新增，参数1为index名称，string类型；参数2为要插入的数据主键；参数3为要插入的数据，tablele类型或者json字符串
     result['created_at'] = currentTime
     result['updated_at'] = currentTime
-    ops.INSERT("jyjzzk_shop_product", id, result)
+    ops.INSERT("jyjzzk_lian_product_shop", result["lian_id"], result)
 elseif action == "delete" then -- 删除事件
     -- 删除，参数1为index名称，string类型；参数2为要插入的数据主键
-    ops.DELETE("jyjzzk_shop_product", id)
+    ops.DELETE("jyjzzk_lian_product_shop", result["lian_id"])
 else -- 修改事件
     -- 修改，参数1为index名称，string类型；参数2为要插入的数据主键；参数3为要插入的数据，tablele类型或者json字符串
     result['updated_at'] = currentTime
-    ops.UPDATE("jyjzzk_shop_product", id, result)
+    ops.UPDATE("jyjzzk_lian_product_shop", result["lian_id"], result)
 end

@@ -65,6 +65,10 @@ rule:
         field: longitude
         type: double
       -
+        column: coordinate
+        field: coordinate
+        type: geo_point
+      -
         column: created_at
         field: created_at
         type: keyword
