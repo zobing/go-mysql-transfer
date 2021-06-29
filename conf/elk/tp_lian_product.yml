@@ -312,3 +312,11 @@ rule:
         column: city_code
         field: city_code
         type: keyword
+      -
+        column: created_at
+        field: created_at
+        type: keyword
+      -
+        column: updated_at
+        field: updated_at
+        type: keyword

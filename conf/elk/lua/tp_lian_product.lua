@@ -278,14 +278,19 @@ result["st_store_state"] = 1
 result["st_deleted"] = 0
 --[[ 门店信息 结束 --]]
 
+local currentTime = os.date("%Y-%m-%d %H:%M:%S")
+
 -- 操作ES
 if action == "insert" then -- 新增事件
     -- 新增，参数1为index名称，string类型；参数2为要插入的数据主键；参数3为要插入的数据，tablele类型或者json字符串
+    result['created_at'] = currentTime
+    result['updated_at'] = currentTime
     ops.INSERT("jyjzzk_shop_product", id, result)
 elseif action == "delete" then -- 删除事件
     -- 删除，参数1为index名称，string类型；参数2为要插入的数据主键
     ops.DELETE("jyjzzk_shop_product", id)
 else -- 修改事件
     -- 修改，参数1为index名称，string类型；参数2为要插入的数据主键；参数3为要插入的数据，tablele类型或者json字符串
+    result['updated_at'] = currentTime
     ops.UPDATE("jyjzzk_shop_product", id, result)
 end

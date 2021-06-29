@@ -1,0 +1,74 @@
+# mysql配置
+addr: 127.0.0.1:3306 #数据库地址，需要调整
+user: #数据库访问用户名，需要调整
+pass: #数据库访问密码，需要调整
+charset : utf8
+slave_id: 5104 #slave ID
+flavor: mysql #mysql or mariadb,默认mysql
+
+#系统相关配置
+data_dir: ../../store/tp_lian_product_shop #应用产生的数据存放地址，包括日志、缓存数据等，默认当前运行目录下store文件夹，需要调整
+#logger:
+#  level: info #日志级别；支持：debug|info|warn|error，默认info
+
+#maxprocs: 50 #并发协（线）程数量，默认为: CPU核数*2；一般情况下不需要设置此项
+bulk_size: 1000 #每批处理数量，不写默认100，可以根据带宽、机器性能等调整;如果是全量数据初始化时redis建议设为1000，其他接收端酌情调大
+
+#目标类型
+target: elasticsearch #支持redis、mongodb、elasticsearch、rocketmq、kafka、rabbitmq
+
+#elasticsearch连接配置
+es_addrs: http://es-cn-7pp289qbm000p7vum.elasticsearch.aliyuncs.com:9200 #连接地址，多个用逗号分隔，需要调整
+es_version: 7 #Elasticsearch版本，支持6和7、默认为7
+es_user: elastic #用户名，需要调整
+es_password: Abc123456 #密码，需要调整
+
+#规则配置
+rule:
+  -
+    schema: esshop #数据库名称，需要调整
+    table: tp_lian_product_shop #表名称
+    order_by_column: lian_id #排序字段，存量数据同步时不能为空
+    date_formatter: yyyy-MM-dd #date类型格式化， 不填写默认yyyy-MM-dd
+    datetime_formatter: yyyy-MM-dd HH:mm:ss #datetime、timestamp类型格式化，不填写默认yyyy-MM-dd HH:mm:ss
+    lua_file_path: ../../conf/elk/lua/tp_lian_product_shop.lua   #lua脚本文件
+
+    #elasticsearch相关
+    es_index: jyjzzk_shop_product #Index名称,可以为空，默认使用表(Table)名称
+    es_mappings: #索引映射，可以为空，为空时根据数据类型自行推导ES推导
+      -
+        column: lian_id #数据库列名称
+        field: lian_id #映射后的ES字段名称
+        type: long #ES字段类型
+      -
+        column: lian_product_id
+        field: lian_product_id
+        type: long
+      -
+        column: name
+        field: name
+        type: text
+      -
+        column: address
+        field: address
+        type: text
+      -
+        column: phone_number
+        field: phone_number
+        type: keyword
+      -
+        column: latitude
+        field: latitude
+        type: double
+      -
+        column: longitude
+        field: longitude
+        type: double
+      -
+        column: created_at
+        field: created_at
+        type: keyword
+      -
+        column: updated_at
+        field: updated_at
+        type: keyword

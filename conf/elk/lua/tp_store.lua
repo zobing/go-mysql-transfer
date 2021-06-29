@@ -51,6 +51,8 @@ else
     result["st_is_show_wt"] = 0
 end
 
+result['updated_at'] = os.date("%Y-%m-%d %H:%M:%S");
+
 for i, shopInfo in ipairs(shopList) do
     if next(shopInfo) ~= nil then
         -- 索引
