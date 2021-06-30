@@ -243,14 +243,24 @@ end
 
 -- 经度
 if (row["longitude"] ~= nil) and (row["longitude"] ~= "") then
-    result["longitude"] = row["longitude"]
+    local lng = tonumber(row["longitude"])
+    if (lng >= -180) and (lng <= 180) then
+        result["longitude"] = lng
+    else
+        result["longitude"] = 0
+    end
 else
     result["longitude"] = 0
 end
 
 -- 纬度
 if (row["latitude"] ~= nil) and (row["latitude"] ~= "") then
-    result["latitude"] = row["latitude"]
+    local lat = tonumber(row["latitude"])
+    if (lat >= -90) and (lat <= 90) then
+        result["latitude"] = lat
+    else
+        result["latitude"] = 0
+    end
 else
     result["latitude"] = 0
 end

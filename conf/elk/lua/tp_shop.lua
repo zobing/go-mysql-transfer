@@ -163,7 +163,13 @@ end
 -- 门店地址经度（腾讯坐标）：longitude_tencent
 if row["longitude_tencent"] ~= nil then
     result["sh_longitude_tencent"] = row["longitude_tencent"]
-    result["longitude"] = row["longitude_tencent"]
+
+    local lng = tonumber(row["longitude_tencent"])
+    if (lng >= -180) and (lng <= 180) then
+        result["longitude"] = lng
+    else
+        result["longitude"] = 0
+    end
 else
     result["sh_longitude_tencent"] = 0
     result["longitude"] = 0
@@ -172,7 +178,13 @@ end
 -- 门店地址纬度（腾讯坐标）：latitude_tencent
 if row["latitude_tencent"] ~= nil then
     result["sh_latitude_tencent"] = row["latitude_tencent"]
-    result["latitude"] = row["latitude_tencent"]
+
+    local lat = tonumber(row["latitude_tencent"])
+    if (lat >= -90) and (lat <= 90) then
+        result["latitude"] = lat
+    else
+        result["latitude"] = 0
+    end
 else
     result["sh_latitude_tencent"] = 0
     result["latitude"] = 0
