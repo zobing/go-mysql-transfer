@@ -312,3 +312,11 @@ rule:
         column: updated_at
         field: updated_at
         type: keyword
+      -
+        column: longitude
+        field: longitude
+        type: double
+      -
+        column: latitude
+        field: latitude
+        type: double

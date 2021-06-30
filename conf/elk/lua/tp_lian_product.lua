@@ -241,6 +241,20 @@ else
     result['lp_is_meet_with_single_min'] = 0
 end
 
+-- 经度
+if (row["longitude"] ~= nil) and (row["longitude"] ~= "") then
+    result["longitude"] = row["longitude"]
+else
+    result["longitude"] = 0
+end
+
+-- 纬度
+if (row["latitude"] ~= nil) and (row["latitude"] ~= "") then
+    result["latitude"] = row["latitude"]
+else
+    result["latitude"] = 0
+end
+
 -- 坐标
 if (row["longitude"] ~= nil) and (row["latitude"] ~= nil) and (row["longitude"] ~= "") and (row["latitude"] ~= "") then
     local lng = tonumber(row["longitude"])

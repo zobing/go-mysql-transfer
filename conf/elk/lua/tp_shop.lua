@@ -163,15 +163,19 @@ end
 -- 门店地址经度（腾讯坐标）：longitude_tencent
 if row["longitude_tencent"] ~= nil then
     result["sh_longitude_tencent"] = row["longitude_tencent"]
+    result["longitude"] = row["longitude_tencent"]
 else
     result["sh_longitude_tencent"] = 0
+    result["longitude"] = 0
 end
 
 -- 门店地址纬度（腾讯坐标）：latitude_tencent
 if row["latitude_tencent"] ~= nil then
     result["sh_latitude_tencent"] = row["latitude_tencent"]
+    result["latitude"] = row["latitude_tencent"]
 else
     result["sh_latitude_tencent"] = 0
+    result["latitude"] = 0
 end
 
 -- 门店状态，0关闭，1开启，2审核中：shop_status
